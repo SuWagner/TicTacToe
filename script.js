@@ -1,3 +1,4 @@
+//Unfortunately something went wrong at CheckDraw and who is the winner
 var board = [
   ["","",""],
   ["","",""],
@@ -24,6 +25,7 @@ $(document).ready(function(){
   $(".square").click(function(){
     sqrId = $(this).attr("id");
     playerMove();
+
 computerAI()
     if(checkWinners()){
       alert(turn +" wins the game!");
