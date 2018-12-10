@@ -31,13 +31,23 @@ body{
 .row > div{
   display: inline-block;
   font-size: 110px;
-  border: solid 3px white;
+  border-right: solid 3px white;
   width: 100px;
   height: 102px;
   text-align: center;
   vertical-align: top;
   line-height: 100px;
 }
+
+.row > div:last-child {
+  border-right: none;
+}
+
+.row>div:not(.noBottomLine){
+  border-bottom: solid 3px white;
+
+}
+
 
 
 .reset{
