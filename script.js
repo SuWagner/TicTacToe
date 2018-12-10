@@ -23,17 +23,16 @@ $(document).ready(function(){
   // square event listnener
   $(".square").click(function(){
     sqrId = $(this).attr("id");
-    if($("#"+sqrId).text() == "") {
-      $("#"+sqrId).text(turn);
-      row = getRow();
-      col = getCol();
-      board[row][col] = turn;
-      turn = (turn == user) ? computer : user;
-      console.log(board);
-    }else{
-      alert("Wrong Move");
+    playerMove();
+computerAI()
+    if(checkWinners()){
+      alert(turn +" wins the game!");
     }
 
+    if(!checkDraw()){
+      alert("It's a draw");
+    }
+    //turn = (turn == user) ? computer : user;
 
   });
 
@@ -42,9 +41,34 @@ $(document).ready(function(){
     resetBoard();
   });
 
-
-
 });
+
+//player move
+function playerMove(){
+  if($("#"+sqrId).text() == "") {
+    $("#"+sqrId).text(turn);
+    row = getRow();
+    col = getCol();
+    board[row][col] = turn;
+    console.log(board);
+  }else{
+    alert("Wrong Move");
+  }
+}
+
+/* computer play: random square*/
+function computerAI(){
+
+  var min = 0, max = 8;
+  do{
+    sqrId = Math.floor(Math.random() * (max + min));
+  }while($("#"+sqrId).text() != "")
+  $('#'+sqrId).text(computer);
+  row = getRow();
+  col = getCol();
+  board[row][col] = computer;
+}
+
 
 //getting row number
 function getRow(){
@@ -58,13 +82,47 @@ function getCol(){
 }
 
 function checkWinners(){
+  //checking rows
+  for(var i = 0; i< ARR_LENGTH; i++){
+    if(board[i][0] != "" && board[i][0] == board[i][1] && board[i][1] == board[i][2])
+      return true;
+  }
+  //checking cols
+  for(var i = 0; i< ARR_LENGTH; i++){
+    if(board[0][i] != "" && board[0][i] == board[1][i] && board[1][i] == board[2][i])
+      return true;
+  }
 
+  if(board[0][0] != "" && board[0][0] == board[1][1] && board[1][1] == board[2][2])
+    return true;
+  if(board[0][2] != "" && board[0][2] == board[1][1] && board[1][1] == board[2][0])
+    return true;
+
+  return false;
+}
+
+function checkDraw(){
+  for(var i =0; i< ARR_LENGTH; i++){
+    for(var j = 0; j < board[i].length; j++){
+      if(board[i][j] == "")
+        return true;
+    }
+  }
+  return false;
 }
 
 function resetBoard(){
   $(".reset").click(function(){
       $(".square").text("");
       $(".checkBox").prop("checked", false);
+      user = "";
+      turn = "";
+      computer = "";
+      for(var i = 0; i < ARR_LENGTH; i++){
+        for(var j=0; j< board[i].length; j++){
+          board[i][j] = "";
+        }
+      }
   });
 }
 
