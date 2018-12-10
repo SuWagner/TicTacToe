@@ -1,0 +1,40 @@
+body{
+ background-color: Darkslategray;
+ font-family: 'Varela Round', sans-serif;
+ color: white;
+}
+
+.container{
+  margin: 0 auto;
+  text-align: center;
+}
+
+.header{
+  margin-top: 50px;
+}
+
+.controls{
+  margin-top: 40px;
+}
+
+.checkBox{
+  margin-left: 40px;
+  color: Darkslategray;
+}
+
+.boardContainer{
+  margin-top: 40px;
+}
+.row{
+  font-size: 0px;
+}
+.row > div{
+  display: inline-block;
+  font-size: 110px;
+  border: solid 3px white;
+  width: 100px;
+  height: 102px;
+  text-align: center;
+  vertical-align: top;
+  line-height: 100px;
+}

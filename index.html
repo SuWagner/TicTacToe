@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Titel</title>
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css" media="screen" />
+  </head>
+  <body>
+    <div class="container">
+      <!--Header Section-->
+      <div class"header">
+        <h1>Tic Tac Toe</h1>
+      </div>
+
+      <!--Control Section - Checkboxes-->
+      <div class="controls">
+        <h3>You are playing against the computer. Choose a shape:</h3>
+        <form action="#">
+          <input class="checkBox" type="radio" name="xPlayer" value="X"> X
+          <input class="checkBox" type="radio" name="xPlayer" value="O"> O
+        </form>
+      </div>
+      <!--Board Container-->
+      <div class="boardContainer">
+        <!--First Row-->
+        <div class="row">
+          <div id="1" class="square"></div>
+          <div id="2" class="square"></div>
+          <div id="3" class="square"></div>
+        </div>
+        <!--Second Row-->
+        <div class="row">
+          <div id="4" class="square"></div>
+          <div id="5" class="square"></div>
+          <div id="6" class="square"></div>
+        </div>
+        <!--Third Row-->
+        <div class="row">
+          <div id="7" class="square"></div>
+          <div id="8" class="square"></div>
+          <div id="9" class="square"></div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script language="javascript" type="text/javascript" src="script.js"></script>
+  </body>
+</html>
