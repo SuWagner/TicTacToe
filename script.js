@@ -8,6 +8,7 @@ var board = [
 var turn;
 var sqrId;
 var user, computer, row, col;
+var counter = 9;
 const ARR_LENGTH = 3;
 
 $(document).ready(function(){
@@ -26,15 +27,20 @@ $(document).ready(function(){
     sqrId = $(this).attr("id");
     playerMove();
 
-computerAI()
+    turn = (turn == user) ? computer : user;
+
+    computerAI()
+//turn = (turn == user) ? computer : user;
+
+
     if(checkWinners()){
       alert(turn +" wins the game!");
     }
-
     if(!checkDraw()){
       alert("It's a draw");
     }
-    //turn = (turn == user) ? computer : user;
+    turn = (turn == user) ? computer : user;
+
 
   });
 
@@ -52,7 +58,10 @@ function playerMove(){
     row = getRow();
     col = getCol();
     board[row][col] = turn;
+    counter--;
     console.log(board);
+
+
   }else{
     alert("Wrong Move");
   }
@@ -64,11 +73,14 @@ function computerAI(){
   var min = 0, max = 8;
   do{
     sqrId = Math.floor(Math.random() * (max + min));
-  }while($("#"+sqrId).text() != "")
+  }   while(($("#"+sqrId).text() != "") && counter != 0)
   $('#'+sqrId).text(computer);
   row = getRow();
   col = getCol();
   board[row][col] = computer;
+  counter--;
+
+//Diese Whileschleife enden lassen z.B. mit einem Counter, der mitzählt wieviele felder noch leer sind.
 }
 
 
@@ -120,6 +132,7 @@ function resetBoard(){
       user = "";
       turn = "";
       computer = "";
+      counter = 9;
       for(var i = 0; i < ARR_LENGTH; i++){
         for(var j=0; j< board[i].length; j++){
           board[i][j] = "";
