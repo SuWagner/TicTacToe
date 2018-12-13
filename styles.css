@@ -57,6 +57,19 @@ body{
   background-color: #ff0066;
 }
 
+
+@media (max-width: 600px) {
+  .Message{
+    font-size: 40px;
+    left:7%;
+    top: 34%;
+    padding: 5px 50px;
+    background-color: #ff0066;
+  }
+}
+
+
+
 .reset{
   margin-top: 50px;
   color: white;
