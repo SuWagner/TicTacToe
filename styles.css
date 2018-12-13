@@ -1,5 +1,5 @@
 body{
- background-color: Darkslategray;
+ background-color: #0284A8;
  font-family: 'Varela Round', sans-serif;
  color: white;
 }
@@ -19,7 +19,7 @@ body{
 
 .checkBox{
   margin-left: 40px;
-  color: Darkslategray;
+  color: #E1F7E7;
 }
 
 .boardContainer{
