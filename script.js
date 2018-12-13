@@ -12,6 +12,7 @@ var counter = 9;
 const ARR_LENGTH = 3;
 
 $(document).ready(function(){
+  $(".checkBox").prop("checked", false);
   resetBoard();
   // checkbox event listnener
   $(".checkBox").click(function(){
@@ -26,7 +27,10 @@ $(document).ready(function(){
   $(".square").click(function(){
     sqrId = $(this).attr("id");
     playerMove();
-
+    if(checkWinners()){
+      alert(turn +" wins the game!");
+      return false;
+    }
     turn = (turn == user) ? computer : user;
 
     computerAI()
@@ -35,12 +39,13 @@ $(document).ready(function(){
 
     if(checkWinners()){
       alert(turn +" wins the game!");
+      return false;
     }
     if(!checkDraw()){
       alert("It's a draw");
+      return false;
     }
     turn = (turn == user) ? computer : user;
-
 
   });
 
