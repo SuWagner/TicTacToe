@@ -13,6 +13,7 @@ const ARR_LENGTH = 3;
 
 $(document).ready(function(){
   $(".checkBox").prop("checked", false);
+  $(".Message").hide();
   resetBoard();
   // checkbox event listnener
   $(".checkBox").click(function(){
@@ -29,6 +30,12 @@ $(document).ready(function(){
     playerMove();
     if(checkWinners()){
       alert(turn +" wins the game!");
+      if(turn == user){
+        $(".Message").text("You won!");
+      }else{
+        $(".Message").text("You loose!");
+      }
+      $(".Message").show();
       return false;
     }
     turn = (turn == user) ? computer : user;
@@ -39,10 +46,17 @@ $(document).ready(function(){
 
     if(checkWinners()){
       alert(turn +" wins the game!");
+        if(turn == user){
+          $(".Message").text("You won!");
+        }else{
+          $(".Message").text("You loose!");
+        }
+        $(".Message").show();
       return false;
     }
     if(!checkDraw()){
-      alert("It's a draw");
+      $(".Message").text("It's a draw");
+      $(".Message").show();
       return false;
     }
     turn = (turn == user) ? computer : user;
@@ -134,6 +148,8 @@ function resetBoard(){
   $(".reset").click(function(){
       $(".square").text("");
       $(".checkBox").prop("checked", false);
+      $(".Message").hide();
+
       user = "";
       turn = "";
       computer = "";
